@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="SmartHomeLibrary\Communications\CommandsBootloader.cs" />
+    <Compile Remove="SmartHomeLibrary\Communications\CommandsCentralUnit.cs" />
+    <Compile Remove="SmartHomeLibrary\Communications\EthernetHelper.cs" />
+    <Compile Remove="SmartHomeLibrary\Communications\FakeSerialPort.cs" />
+    <Compile Remove="SmartHomeLibrary\Communications\SerialPortHelper.cs" />
+    <Compile Remove="SmartHomeLibrary\Database.cs" />
+    <Compile Remove="SmartHomeLibrary\DatabaseModel.cs" />
+    <Compile Remove="SmartHomeLibrary\DeviceTreeNode.cs" />
+    <Compile Remove="SmartHomeLibrary\UpgradeProgram.cs" />
+    <Compile Remove="SmartHomeWinLibrary\PacketsControl.xaml.cs" />
+    <Compile Remove="SmartHomeWinLibrary\PacketsControl_UpgradeProgram.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="SmartHomeWinLibrary\PacketsControl.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SharpZipLib" Version="1.4.2" />
+    <PackageReference Include="System.IO.Ports" Version="7.0.0" />
+    <PackageReference Include="System.Management" Version="7.0.2" />
+  </ItemGroup>
+
+</Project>
