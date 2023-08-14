@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:InteligentnyDomSimulator"
 				xmlns:smarthomewinlibrary="clr-namespace:SmartHomeTool.SmartHomeWinLibrary"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="800"
+        Title="InteligentnyDom Simulator" Height="700" Width="800"
 				Loaded="Window_Loaded" Unloaded="Window_Unloaded" Closing="Window_Closing">
   <Grid>
 		<Grid.RowDefinitions>
