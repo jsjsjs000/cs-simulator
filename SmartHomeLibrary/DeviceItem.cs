@@ -17,6 +17,7 @@ namespace InteligentnyDomSimulator.SmartHomeLibrary
 		public byte hardwareSegmentsCount;
 		public byte hardwareVersion;
 		public DeviceItemStatus? status;
+		public string description = String.Empty;
 	}
 
 	class DeviceItemStatus

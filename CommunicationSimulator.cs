@@ -24,30 +24,26 @@ namespace InteligentnyDomSimulator
 		public static void InitializeDeviceConfiguration()
 		{
 				/// Adam Kukuc configuration: DIN-CU f938c9cd 70:b8:f6:87:62:e3
-			AddDeviceItem(0x74024593, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0); // 7	- Salon i kuchnia - parter
-			AddDeviceItem(0xedd60678, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0); // 10	- Korytarz, wejście, klatka schodowa - parter
-			AddDeviceItem(0xda906314, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0); // 9	- WC - parter
-			AddDeviceItem(0x6efa00b0, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0); // 4	- Sypialnia - I piętro
-			AddDeviceItem(0x66a8c8e8, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0); // 5	- Łazienka - I piętro
-			AddDeviceItem(0x262f6efd, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0); // 6	- Korytarz, klatka schodowa - I piętro
-			AddDeviceItem(0x1b28c309, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0); // 1	- Poddasze
-			AddDeviceItem(0x86246f30, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0); // 17	- Zewnętrzny
-			AddDeviceItem(0xd054c0f1, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0); // 12 - CWU
-			AddDeviceItem(0x6e9dd4c0, LineNumber.UART1, HardwareType1Enum.DIN, HardwareType2Enum.Temp, 4, 1, 0); // DIN- 1: Piwnica
+			AddDeviceItem(0x74024593, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0, "Salon i kuchnia - parter");
+			AddDeviceItem(0xedd60678, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0, "Korytarz, wejście, klatka schodowa - parter");
+			AddDeviceItem(0xda906314, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0, "WC - parter");
+			AddDeviceItem(0x6efa00b0, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0, "Sypialnia - I piętro");
+			AddDeviceItem(0x66a8c8e8, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0, "Łazienka - I piętro");
+			AddDeviceItem(0x262f6efd, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0, "Korytarz, klatka schodowa - I piętro");
+			AddDeviceItem(0x1b28c309, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0, "Poddasze");
+			AddDeviceItem(0x86246f30, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0, "Zewnętrzny");
+			AddDeviceItem(0xd054c0f1, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0, "CWU");
+			AddDeviceItem(0x6e9dd4c0, LineNumber.UART1, HardwareType1Enum.DIN, HardwareType2Enum.Temp, 4, 1, 0, "Piwnica");
 
-			AddDeviceItem(0xbd2fa348, LineNumber.UART1, HardwareType1Enum.DIN, HardwareType2Enum.Rel, 2, 1, 0);  // 1.1 - Salon - parter
-																																																			 		 // 1.2 - Korytarz - parter
-			AddDeviceItem(0xbc9ebdef, LineNumber.UART1, HardwareType1Enum.DIN, HardwareType2Enum.Rel, 2, 1, 0);  // 2.1 - WC - parter
-																																																		 			 // 2.2 - Sypialnia - I piętro
-			AddDeviceItem(0xe423a30f, LineNumber.UART1, HardwareType1Enum.DIN, HardwareType2Enum.Rel, 2, 1, 0);  // 3.1 - Łazienka - I piętro
-																																																					 // 3.2 - Korytarz - I piętro
-			AddDeviceItem(0xf12e11f2, LineNumber.UART1, HardwareType1Enum.DIN, HardwareType2Enum.Rel, 2, 1, 0);  // 4.1 - Poddasze
-																																																					 // 4.2 - <brak>
-			AddDeviceItem(0x7bf90ca3, LineNumber.UART1, HardwareType1Enum.DIN, HardwareType2Enum.Rel, 2, 1, 0);  // 9.1 - CWU Boiler
+			AddDeviceItem(0xbd2fa348, LineNumber.UART1, HardwareType1Enum.DIN, HardwareType2Enum.Rel, 2, 1, 0, "Salon - parter, Korytarz - parter");
+			AddDeviceItem(0xbc9ebdef, LineNumber.UART1, HardwareType1Enum.DIN, HardwareType2Enum.Rel, 2, 1, 0, "WC - parter, Sypialnia - I piętro");
+			AddDeviceItem(0xe423a30f, LineNumber.UART1, HardwareType1Enum.DIN, HardwareType2Enum.Rel, 2, 1, 0, "Łazienka - I piętro, Korytarz - I piętro");
+			AddDeviceItem(0xf12e11f2, LineNumber.UART1, HardwareType1Enum.DIN, HardwareType2Enum.Rel, 2, 1, 0, "Poddasze, <brak>");
+			AddDeviceItem(0x7bf90ca3, LineNumber.UART1, HardwareType1Enum.DIN, HardwareType2Enum.Rel, 2, 1, 0, "CWU Boiler");
 		}
 
 		static void AddDeviceItem(uint address, LineNumber line, HardwareType1Enum type1, HardwareType2Enum type2, byte hardwareSegmentsCount,
-				byte hardwareVersion, ushort _)
+				byte hardwareVersion, ushort _, string description)
 		{
 			DeviceItem deviceItem = new()
 			{
@@ -57,6 +53,7 @@ namespace InteligentnyDomSimulator
 				hardwareType2 = type2,
 				hardwareSegmentsCount = hardwareSegmentsCount,
 				hardwareVersion = hardwareVersion,
+				description = description,
 			};
 			if (type2 == HardwareType2Enum.Temp)
 			{

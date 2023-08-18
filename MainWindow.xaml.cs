@@ -114,8 +114,8 @@ namespace InteligentnyDomSimulator
 
 			TextBlock textBlockAddress = new()
 			{
-				Text = deviceItem.address.ToString("x8"),
-				Width = 70,
+				Text = deviceItem.address.ToString("x8") + "  (" + deviceItem.address + ")",
+				Width = 150,
 			};
 			stackPanel.Children.Add(textBlockAddress);
 
@@ -185,6 +185,13 @@ namespace InteligentnyDomSimulator
 					checkBoxRelay.Content = checkBoxRelayError;
 				}
 			}
+
+			TextBlock tbBlock = new()
+			{
+				Text = deviceItem.description,
+				Margin = new Thickness(50, 0, 0, 0),
+			};
+			stackPanel.Children.Add(tbBlock);
 		}
 
 		void CreateDevicesControls()
