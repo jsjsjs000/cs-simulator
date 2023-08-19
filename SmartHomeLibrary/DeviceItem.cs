@@ -29,7 +29,7 @@ namespace InteligentnyDomSimulator.SmartHomeLibrary
 
 	class TemperatureStatus : DeviceItemStatus
 	{
-		public ushort[] temperatures = Array.Empty<ushort>();
+		public float[] temperatures = Array.Empty<float>();
 	}
 
 	class RelayStatus : DeviceItemStatus

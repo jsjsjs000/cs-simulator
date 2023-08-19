@@ -157,7 +157,7 @@ namespace InteligentnyDomSimulator
 					{
 						DeviceItemHandler deviceItemHandler = (DeviceItemHandler)((FrameworkElement)sender).Tag;
 						if (float.TryParse(((TextBox)sender).Text, out float temp))
-							((TemperatureStatus)deviceItemHandler.status).temperatures[deviceItemHandler.index] = (ushort)temp;
+							((TemperatureStatus)deviceItemHandler.status).temperatures[deviceItemHandler.index] = temp;
 					};
 					stackPanel.Children.Add(textBox);
 				}

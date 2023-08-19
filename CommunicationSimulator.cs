@@ -33,13 +33,13 @@ namespace InteligentnyDomSimulator
 			AddDeviceItem(0x1b28c309, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0, "Poddasze");
 			AddDeviceItem(0x86246f30, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0, "Zewnętrzny");
 			AddDeviceItem(0xd054c0f1, LineNumber.UART1, HardwareType1Enum.BOX, HardwareType2Enum.Temp, 2, 1, 0, "CWU");
-			AddDeviceItem(0x6e9dd4c0, LineNumber.UART1, HardwareType1Enum.DIN, HardwareType2Enum.Temp, 4, 1, 0, "Piwnica");
+			AddDeviceItem(0x6e9dd4c0, LineNumber.UART1, HardwareType1Enum.DIN, HardwareType2Enum.Temp, 4, 1, 0, "Piwnica, <brak>, <brak>, <brak>");
 
 			AddDeviceItem(0xbd2fa348, LineNumber.UART1, HardwareType1Enum.DIN, HardwareType2Enum.Rel, 2, 1, 0, "Salon - parter, Korytarz - parter");
 			AddDeviceItem(0xbc9ebdef, LineNumber.UART1, HardwareType1Enum.DIN, HardwareType2Enum.Rel, 2, 1, 0, "WC - parter, Sypialnia - I piętro");
 			AddDeviceItem(0xe423a30f, LineNumber.UART1, HardwareType1Enum.DIN, HardwareType2Enum.Rel, 2, 1, 0, "Łazienka - I piętro, Korytarz - I piętro");
 			AddDeviceItem(0xf12e11f2, LineNumber.UART1, HardwareType1Enum.DIN, HardwareType2Enum.Rel, 2, 1, 0, "Poddasze, <brak>");
-			AddDeviceItem(0x7bf90ca3, LineNumber.UART1, HardwareType1Enum.DIN, HardwareType2Enum.Rel, 2, 1, 0, "CWU Boiler");
+			AddDeviceItem(0x7bf90ca3, LineNumber.UART1, HardwareType1Enum.DIN, HardwareType2Enum.Rel, 2, 1, 0, "CWU Boiler, <brak>");
 		}
 
 		static void AddDeviceItem(uint address, LineNumber line, HardwareType1Enum type1, HardwareType2Enum type2, byte hardwareSegmentsCount,
@@ -59,9 +59,9 @@ namespace InteligentnyDomSimulator
 			{
 				deviceItem.status = new TemperatureStatus();
 				if (hardwareSegmentsCount == 2)
-					((TemperatureStatus)deviceItem.status).temperatures = new ushort[] { 21, 24 };
+					((TemperatureStatus)deviceItem.status).temperatures = new float[] { 21, 24 };
 				else if (hardwareSegmentsCount == 4)
-					((TemperatureStatus)deviceItem.status).temperatures = new ushort[] { 21, 22, 23, 24 };
+					((TemperatureStatus)deviceItem.status).temperatures = new float[] { 21, 22, 23, 24 };
 				else
 					return;
 			}
@@ -192,14 +192,20 @@ namespace InteligentnyDomSimulator
 					TemperatureStatus? temps = device.status as TemperatureStatus;
 					if (temps != null && device.hardwareSegmentsCount == 2)
 						temperatures = new byte[] {
-								Common.Uint32_1Byte((uint)temps.temperatures[0] << 4), Common.Uint32_0Byte((uint)temps.temperatures[0] << 4),
-								Common.Uint32_1Byte((uint)temps.temperatures[1] << 4), Common.Uint32_0Byte((uint)temps.temperatures[1] << 4)};
+								(temps.temperatures[0] >= 100) ? (byte)0x7f : Common.Uint32_1Byte((uint)(temps.temperatures[0] * 16)),
+								(temps.temperatures[0] >= 100) ? (byte)0xff : Common.Uint32_0Byte((uint)(temps.temperatures[0] * 16)),
+								(temps.temperatures[1] >= 100) ? (byte)0x7f : Common.Uint32_1Byte((uint)(temps.temperatures[1] * 16)),
+								(temps.temperatures[1] >= 100) ? (byte)0xff : Common.Uint32_0Byte((uint)(temps.temperatures[1] * 16))};
 					else if (temps != null && device.hardwareSegmentsCount == 4)
 						temperatures = new byte[] {
-								Common.Uint32_1Byte((uint)temps.temperatures[0] << 4), Common.Uint32_0Byte((uint)temps.temperatures[0] << 4),
-								Common.Uint32_1Byte((uint)temps.temperatures[1] << 4), Common.Uint32_0Byte((uint)temps.temperatures[1] << 4),
-								Common.Uint32_1Byte((uint)temps.temperatures[2] << 4), Common.Uint32_0Byte((uint)temps.temperatures[2] << 4),
-								Common.Uint32_1Byte((uint)temps.temperatures[3] << 4), Common.Uint32_0Byte((uint)temps.temperatures[3] << 4) };
+								(temps.temperatures[0] >= 100) ? (byte)0x7f : Common.Uint32_1Byte((uint)(temps.temperatures[0] * 16)),
+								(temps.temperatures[0] >= 100) ? (byte)0xff : Common.Uint32_0Byte((uint)(temps.temperatures[0] * 16)),
+								(temps.temperatures[1] >= 100) ? (byte)0x7f : Common.Uint32_1Byte((uint)(temps.temperatures[1] * 16)),
+								(temps.temperatures[1] >= 100) ? (byte)0xff : Common.Uint32_0Byte((uint)(temps.temperatures[1] * 16)),
+								(temps.temperatures[2] >= 100) ? (byte)0x7f : Common.Uint32_1Byte((uint)(temps.temperatures[2] * 16)),
+								(temps.temperatures[2] >= 100) ? (byte)0xff : Common.Uint32_0Byte((uint)(temps.temperatures[2] * 16)),
+								(temps.temperatures[3] >= 100) ? (byte)0x7f : Common.Uint32_1Byte((uint)(temps.temperatures[3] * 16)),
+								(temps.temperatures[3] >= 100) ? (byte)0xff : Common.Uint32_0Byte((uint)(temps.temperatures[3] * 16)) };
 					byte[] send = new byte[] { command,
 								Common.Uint32_3Byte(1234), Common.Uint32_2Byte(1234), Common.Uint32_1Byte(1234), Common.Uint32_0Byte(1234), // uptime
 								Common.Uint32_1Byte(3300), Common.Uint32_0Byte(3300),	// voltage
